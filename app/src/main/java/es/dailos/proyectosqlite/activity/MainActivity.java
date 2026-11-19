@@ -1,17 +1,19 @@
 package es.dailos.proyectosqlite.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import android.database.sqlite.SQLiteDatabase;
-import es.dailos.proyectosqlite.bbdd.DatabaseHelper;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
 import es.dailos.proyectosqlite.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,5 +23,26 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+
+        binding.btnRefugio.setOnClickListener(v -> {
+            startActivity(new Intent(this, RefugioActivity.class));
+        });
+
+        binding.btnCriadores.setOnClickListener(v -> {
+            startActivity(new Intent(this, CriadorActivity.class));
+        });
+
+        binding.btnAnimales.setOnClickListener(v -> {
+            startActivity(new Intent(this, AnimalActivity.class));
+        });
+
+        binding.btnUsuarios.setOnClickListener(v -> {
+            startActivity(new Intent(this, UsuarioActivity.class));
+        });
     }
 }

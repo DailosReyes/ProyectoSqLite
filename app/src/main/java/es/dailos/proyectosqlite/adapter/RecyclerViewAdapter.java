@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,7 +20,7 @@ public class RecyclerViewAdapter<T> extends RecyclerView.Adapter<RecyclerViewAda
 
     public interface OnItemClickListener<T> {
         void onEdit(T item);
-        void onDelete(T item);
+        void onInfo(T item);
     }
 
     public interface TextBinder<T> {
@@ -30,9 +31,17 @@ public class RecyclerViewAdapter<T> extends RecyclerView.Adapter<RecyclerViewAda
     private List<T> items;
     private final TextBinder<T> binder;
     private final OnItemClickListener<T> listener;
+    private int iconResId = 0;
 
     public RecyclerViewAdapter(List<T> items, TextBinder<T> binder, OnItemClickListener<T> listener) {
         this.items = items;
+        this.binder = binder;
+        this.listener = listener;
+    }
+
+    public RecyclerViewAdapter(List<T> items, int iconResId, TextBinder<T> binder, OnItemClickListener<T> listener) {
+        this.items = items;
+        this.iconResId = iconResId;
         this.binder = binder;
         this.listener = listener;
     }
@@ -54,8 +63,11 @@ public class RecyclerViewAdapter<T> extends RecyclerView.Adapter<RecyclerViewAda
         T item = items.get(position);
         holder.tvTitulo.setText(binder.getTitle(item));
         holder.tvSubtitulo.setText(binder.getSubtitle(item));
+        if (iconResId != 0) {
+            holder.imgAvatar.setImageResource(iconResId);
+        }
         holder.btnEditar.setOnClickListener(v -> listener.onEdit(item));
-        holder.btnEliminar.setOnClickListener(v -> listener.onDelete(item));
+        holder.btnInfo.setOnClickListener(v -> listener.onInfo(item));
     }
 
     @Override
@@ -75,15 +87,17 @@ public class RecyclerViewAdapter<T> extends RecyclerView.Adapter<RecyclerViewAda
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView imgAvatar;
         TextView tvTitulo, tvSubtitulo;
-        ImageButton btnEditar, btnEliminar;
+        ImageButton btnEditar, btnInfo;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            imgAvatar = itemView.findViewById(R.id.imgAvatar);
             tvTitulo = itemView.findViewById(R.id.tvTitulo);
             tvSubtitulo = itemView.findViewById(R.id.tvSubtitulo);
             btnEditar = itemView.findViewById(R.id.btnEditar);
-            btnEliminar = itemView.findViewById(R.id.btnEliminar);
+            btnInfo = itemView.findViewById(R.id.btnInfo);
         }
     }
 }

@@ -1,3 +1,35 @@
 <resources>
     <string name="app_name">ProyectoSqLite</string>
+
+    <!-- Pantalla Principal (MainActivity) -->
+    <string name="app_header_title">AnimalHub</string>
+    <string name="app_header_badge">SQLite Zoo</string>
+    <string name="panel_de_control">Panel de Control</string>
+    <string name="panel_de_control_desc">Selecciona el módulo para gestionar los datos:</string>
+    <string name="btn_refugios">🏡 Refugios</string>
+    <string name="btn_criadores">👨‍🌾 Criadores</string>
+    <string name="btn_animales">🐾 Animales</string>
+    <string name="btn_usuarios">👤 Usuarios</string>
+
+    <!-- Pantalla Usuario (UsuarioActivity) -->
+    <string name="btn_insertar_usuario">➕ Insertar Usuario</string>
+    <string name="btn_eliminar_usuario">🗑️ Eliminar Usuario</string>
+
+    <!-- Pantalla Animal (AnimalActivity) -->
+    <string name="btn_insertar_animal">➕ Insertar Animal</string>
+    <string name="btn_eliminar_animal">🗑️ Eliminar Animal</string>
+
+    <!-- Pantalla Criador (CriadorActivity) -->
+    <string name="btn_insertar_criador">➕ Insertar Criador</string>
+    <string name="btn_eliminar_criador">🗑️ Eliminar Criador</string>
+
+    <!-- Pantalla Refugio (RefugioActivity) -->
+    <string name="btn_insertar_refugio">➕ Insertar Refugio</string>
+    <string name="btn_eliminar_refugio">🗑️ Eliminar Refugio</string>
+
+    <!-- Descripciones de accesibilidad (Content Descriptions) -->
+    <string name="cd_volver">Volver</string>
+    <string name="cd_icono">Icono</string>
+    <string name="cd_editar">Editar</string>
+    <string name="cd_informacion">Información</string>
 </resources>

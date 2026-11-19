@@ -21,6 +21,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.UsuarioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.RefugioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.CriadorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.AnimalActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
